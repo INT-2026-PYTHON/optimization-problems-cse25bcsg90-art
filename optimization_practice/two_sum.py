@@ -87,3 +87,21 @@ O(1) time, giving an overall O(n) algorithm.
 =================================================
 
 """
+# Brute Force code
+def two_sum_brute(nums, target):
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return (i, j)
+    return None
+
+
+# Optimized code
+def two_sum_fast(nums, target):
+    seen = {}   
+    for i, x in enumerate(nums):
+        complement = target - x
+        if complement in seen:
+            return (seen[complement], i)
+        seen[x] = i
+    return None
